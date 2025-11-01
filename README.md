@@ -1,10 +1,5 @@
 # SQLEagle Db Maintenance Solution
-[![licence badge]][licence]
-[![stars badge]][stars]
-[![forks badge]][forks]
-[![issues badge]][issues]
-[![bug report badge]][bug report]
-[![feature request badge]][feature request]
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)<br/>
 
 ## Getting Started
 
