@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>DB_Standard_2022</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{8882d2a0-232c-4471-8446-e9c7edae7ecb}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>DB_Standard_2022</RootNamespace>
+    <AssemblyName>DB_Standard_2022</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Database Objects" />
+    <Folder Include="Database Objects\_Schema Tables and Views" />
+    <Folder Include="Database Objects\_Schema Tables and Views\_default-dbo" />
+    <Folder Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability" />
+    <Folder Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability\Assemblies" />
+    <Folder Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability\Functions" />
+    <Folder Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability\Functions\Aggregate Function" />
+    <Folder Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability\Functions\Scalar-value Functions" />
+    <Folder Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability\Functions\Table-value Functions" />
+    <Folder Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability\Rules" />
+    <Folder Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability\Sequences" />
+    <Folder Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability\Stored Procedures" />
+    <Folder Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability\Types" />
+    <Folder Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability\Types\User-Defined Data Types" />
+    <Folder Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability\Types\User-Defined Table Types" />
+    <Folder Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability\Types\User-Defined Types" />
+    <Folder Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability\Types\XML Schema Collections" />
+    <Folder Include="Database Objects\_Schema Tables and Views\_default-dbo\Synonyms" />
+    <Folder Include="Database Objects\_Schema Tables and Views\_default-dbo\Tables" />
+    <Folder Include="Database Objects\_Schema Tables and Views\_default-dbo\Views" />
+    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema" />
+    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability" />
+    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Assemblies" />
+    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Functions" />
+    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Functions\Aggregate Function" />
+    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Functions\Scalar-value Functions" />
+    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Functions\Table-value Functions" />
+    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Rules" />
+    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Sequences" />
+    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Stored Procedures" />
+    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Types" />
+    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Types\User-Defined Data Types" />
+    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Types\User-Defined Table Types" />
+    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Types\User-Defined Types" />
+    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Types\XML Schema Collections" />
+    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Schema" />
+    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Synonyms" />
+    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Tables" />
+    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Views" />
+    <Folder Include="Database Objects\External Resources" />
+    <Folder Include="Database Objects\External Resources\External Data Resources" />
+    <Folder Include="Database Objects\External Resources\External File Resources" />
+    <Folder Include="Database Objects\Programmability" />
+    <Folder Include="Database Objects\Programmability\Assemblies" />
+    <Folder Include="Database Objects\Programmability\Database Triggers" />
+    <Folder Include="Database Objects\Programmability\Functions" />
+    <Folder Include="Database Objects\Programmability\Functions\Aggregate Functions" />
+    <Folder Include="Database Objects\Programmability\Functions\Scalar-value Functions" />
+    <Folder Include="Database Objects\Programmability\Functions\Table-value Functions" />
+    <Folder Include="Database Objects\Programmability\Rules" />
+    <Folder Include="Database Objects\Programmability\Sequences" />
+    <Folder Include="Database Objects\Programmability\Stored Procedures" />
+    <Folder Include="Database Objects\Programmability\Types" />
+    <Folder Include="Database Objects\Programmability\Types\User-Defined Data Types" />
+    <Folder Include="Database Objects\Programmability\Types\User-Defined Table Types" />
+    <Folder Include="Database Objects\Programmability\Types\User-Defined Types" />
+    <Folder Include="Database Objects\Programmability\Types\XML Schema Collections" />
+    <Folder Include="Database Objects\Security" />
+    <Folder Include="Database Objects\Security\Always Encrypt Keys" />
+    <Folder Include="Database Objects\Security\Always Encrypt Keys\Column Encrypt Keys" />
+    <Folder Include="Database Objects\Security\Always Encrypt Keys\Column Master Keys" />
+    <Folder Include="Database Objects\Security\Asysmetric Keys" />
+    <Folder Include="Database Objects\Security\Certificates" />
+    <Folder Include="Database Objects\Security\Database Audit Specifications" />
+    <Folder Include="Database Objects\Security\Roles" />
+    <Folder Include="Database Objects\Security\Roles\Application Roles" />
+    <Folder Include="Database Objects\Security\Roles\Database Role" />
+    <Folder Include="Database Objects\Security\Security Policies" />
+    <Folder Include="Database Objects\Security\Sysmetric Keys" />
+    <Folder Include="Database Objects\Security\Users" />
+    <Folder Include="Database Objects\Service Broker" />
+    <Folder Include="Database Objects\Service Broker\Broker Priorities" />
+    <Folder Include="Database Objects\Service Broker\Contracts" />
+    <Folder Include="Database Objects\Service Broker\Queues" />
+    <Folder Include="Database Objects\Service Broker\Remote Service Binding" />
+    <Folder Include="Database Objects\Service Broker\Routes" />
+    <Folder Include="Database Objects\Service Broker\Services" />
+    <Folder Include="Database Objects\Storage" />
+    <Folder Include="Database Objects\Storage\Full Text Catalogs" />
+    <Folder Include="Database Objects\Storage\Full text Stoplists" />
+    <Folder Include="Database Objects\Storage\Partition Functions" />
+    <Folder Include="Database Objects\Storage\Partition Schemas" />
+    <Folder Include="Database Objects\Storage\Search Property Lists" />
+    <Folder Include="Deployment Scripts" />
+    <Folder Include="Deployment Scripts\Post Deployment" />
+    <Folder Include="Deployment Scripts\Pre Deployment" />
+    <Folder Include="Non-deployment Scripts" />
+    <Folder Include="Scripts\" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Stored Procedures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\CommandLog.sql" />
+    <Build Include="dbo\Stored Procedures\CommandExecute.sql" />
+    <Build Include="dbo\Stored Procedures\DatabaseBackup.sql" />
+    <Build Include="dbo\Stored Procedures\DatabaseIntegrityCheck.sql" />
+    <Build Include="dbo\Stored Procedures\IndexOptimize.sql" />
+    <None Include="Scripts\ScriptsIgnoredOnImport.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="DB-DBA-Maintenance.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <ArtifactReference Include="$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\130\SqlSchemas\master.dacpac">
+      <HintPath>$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\130\SqlSchemas\master.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+    </ArtifactReference>
+    <ArtifactReference Include="$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\130\SqlSchemas\msdb.dacpac">
+      <HintPath>$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\130\SqlSchemas\msdb.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>msdb</DatabaseVariableLiteralValue>
+    </ArtifactReference>
+  </ItemGroup>
+</Project>

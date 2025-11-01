@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="e4e1e216-4547-4d95-a61a-92d4346d7afb" ChangeDateTime="11/01/2025 17:37:21">
+    <Property Name="ElementName" Value="[dbo].[CommandExecute]" />
+    <Property Name="ElementType" Value="SqlProcedure" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="uspCommandExecute" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c14103df-52dd-465f-b133-37869d26a234" ChangeDateTime="11/01/2025 17:39:48">
+    <Property Name="ElementName" Value="[dbo].[DatabaseBackup]" />
+    <Property Name="ElementType" Value="SqlProcedure" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="uspDatabaseBackup" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9a89ed78-5d23-4fd3-a6be-734aacf7b13c" ChangeDateTime="11/01/2025 17:51:03">
+    <Property Name="ElementName" Value="[dbo].[DatabaseBackup]" />
+    <Property Name="ElementType" Value="SqlProcedure" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="uspDatabaseBackup" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b289c396-dbb0-4fc5-aa38-3ab522e35487" ChangeDateTime="11/01/2025 17:56:55">
+    <Property Name="ElementName" Value="[dbo].[DatabaseIntegrityCheck]" />
+    <Property Name="ElementType" Value="SqlProcedure" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[uspDatabaseIntegrityCheck]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6126f203-5061-4c58-a02d-af44f4e123c5" ChangeDateTime="11/01/2025 18:03:17">
+    <Property Name="ElementName" Value="[dbo].[DatabaseBackup]" />
+    <Property Name="ElementType" Value="SqlProcedure" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[uspDatabaseBackup]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1b62fd90-c106-42a3-a093-c800f37e879e" ChangeDateTime="11/01/2025 18:06:31">
+    <Property Name="ElementName" Value="[dbo].[IndexOptimize]" />
+    <Property Name="ElementType" Value="SqlProcedure" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[uspIndexOptimize]" />
+  </Operation>
+</Operations>
