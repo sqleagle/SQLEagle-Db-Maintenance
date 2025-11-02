@@ -45,6 +45,7 @@
     <DefineTrace>true</DefineTrace>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <SuppressTSqlWarnings>71502</SuppressTSqlWarnings>
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
@@ -76,43 +77,9 @@
     <Folder Include="Database Objects\_Schema Tables and Views\_default-dbo\Synonyms" />
     <Folder Include="Database Objects\_Schema Tables and Views\_default-dbo\Tables" />
     <Folder Include="Database Objects\_Schema Tables and Views\_default-dbo\Views" />
-    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema" />
-    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability" />
-    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Assemblies" />
-    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Functions" />
-    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Functions\Aggregate Function" />
-    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Functions\Scalar-value Functions" />
-    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Functions\Table-value Functions" />
-    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Rules" />
-    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Sequences" />
-    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Stored Procedures" />
-    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Types" />
-    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Types\User-Defined Data Types" />
-    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Types\User-Defined Table Types" />
-    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Types\User-Defined Types" />
-    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Programability\Types\XML Schema Collections" />
-    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Schema" />
-    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Synonyms" />
-    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Tables" />
-    <Folder Include="Database Objects\_Schema Tables and Views\spare Schema\Views" />
     <Folder Include="Database Objects\External Resources" />
     <Folder Include="Database Objects\External Resources\External Data Resources" />
     <Folder Include="Database Objects\External Resources\External File Resources" />
-    <Folder Include="Database Objects\Programmability" />
-    <Folder Include="Database Objects\Programmability\Assemblies" />
-    <Folder Include="Database Objects\Programmability\Database Triggers" />
-    <Folder Include="Database Objects\Programmability\Functions" />
-    <Folder Include="Database Objects\Programmability\Functions\Aggregate Functions" />
-    <Folder Include="Database Objects\Programmability\Functions\Scalar-value Functions" />
-    <Folder Include="Database Objects\Programmability\Functions\Table-value Functions" />
-    <Folder Include="Database Objects\Programmability\Rules" />
-    <Folder Include="Database Objects\Programmability\Sequences" />
-    <Folder Include="Database Objects\Programmability\Stored Procedures" />
-    <Folder Include="Database Objects\Programmability\Types" />
-    <Folder Include="Database Objects\Programmability\Types\User-Defined Data Types" />
-    <Folder Include="Database Objects\Programmability\Types\User-Defined Table Types" />
-    <Folder Include="Database Objects\Programmability\Types\User-Defined Types" />
-    <Folder Include="Database Objects\Programmability\Types\XML Schema Collections" />
     <Folder Include="Database Objects\Security" />
     <Folder Include="Database Objects\Security\Always Encrypt Keys" />
     <Folder Include="Database Objects\Security\Always Encrypt Keys\Column Encrypt Keys" />
@@ -144,17 +111,10 @@
     <Folder Include="Deployment Scripts\Pre Deployment" />
     <Folder Include="Non-deployment Scripts" />
     <Folder Include="Scripts\" />
-    <Folder Include="dbo\" />
-    <Folder Include="dbo\Tables\" />
-    <Folder Include="dbo\Stored Procedures\" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\CommandLog.sql" />
-    <Build Include="dbo\Stored Procedures\CommandExecute.sql" />
-    <Build Include="dbo\Stored Procedures\DatabaseBackup.sql" />
-    <Build Include="dbo\Stored Procedures\DatabaseIntegrityCheck.sql" />
-    <Build Include="dbo\Stored Procedures\IndexOptimize.sql" />
     <None Include="Scripts\ScriptsIgnoredOnImport.sql" />
+    <Build Include="Database Objects\_Schema Tables and Views\_default-dbo\Tables\CommandLog.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="DB-DBA-Maintenance.refactorlog" />
@@ -170,5 +130,21 @@
       <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
       <DatabaseVariableLiteralValue>msdb</DatabaseVariableLiteralValue>
     </ArtifactReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Database Objects\_Schema Tables and Views\_default-dbo\Tables\QueueDatabase.sql" />
+    <Build Include="Database Objects\_Schema Tables and Views\_default-dbo\Tables\Queue.sql" />
+    <Build Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability\Types\User-Defined Table Types\udtErrorMessage.sql" />
+    <Build Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability\Stored Procedures\CommandExecute.sql" />
+    <Build Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability\Stored Procedures\DatabaseBackup.sql" />
+    <Build Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability\Stored Procedures\DatabaseIntegrityCheck.sql" />
+    <Build Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability\Stored Procedures\ErrorHandling.sql" />
+    <Build Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability\Stored Procedures\IndexOptimize.sql" />
+    <Build Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability\Stored Procedures\LogOperation.sql" />
+    <Build Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability\Stored Procedures\ValidateParameters.sql" />
+    <Build Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability\Functions\Scalar-value Functions\ufsUtilities_Hygiene_String.sql" />
+    <Build Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability\Functions\Table-value Functions\uftGenerate_Database_Table.sql" />
+    <Build Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability\Types\User-Defined Table Types\udtDatabase_OI.sql" />
+    <Build Include="Database Objects\_Schema Tables and Views\_default-dbo\Programability\Types\User-Defined Table Types\udtDatabase_DB.sql" />
   </ItemGroup>
 </Project>

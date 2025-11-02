@@ -1,81 +1,78 @@
 ﻿CREATE PROCEDURE [dbo].[uspDatabaseBackup]
-
-@Databases NVARCHAR(MAX) = NULL,
-@Directory NVARCHAR(MAX) = NULL,
-@BackupType NVARCHAR(MAX),
-@Verify NVARCHAR(MAX) = 'N',
-@CleanupTime INT = NULL,
-@CleanupMode NVARCHAR(MAX) = 'AFTER_BACKUP',
-@Compress NVARCHAR(MAX) = NULL,
-@CompressionAlgorithm NVARCHAR(MAX) = NULL,
-@CompressionLevel NVARCHAR(MAX) = NULL,
-@CopyOnly NVARCHAR(MAX) = 'N',
-@ChangeBackupType NVARCHAR(MAX) = 'N',
-@BackupSoftware NVARCHAR(MAX) = NULL,
-@Checksum NVARCHAR(MAX) = NULL,
-@BlockSize INT = NULL,
-@BufferCount INT = NULL,
-@MaxTransferSize INT = NULL,
-@NumberOfFiles INT = NULL,
-@MinBackupSizeForMultipleFiles INT = NULL,
-@MaxFileSize INT = NULL,
-@CompressionLevelNumeric INT = NULL,
-@Description NVARCHAR(MAX) = NULL,
-@BackupSetName NVARCHAR(MAX) = NULL,
-@Threads INT = NULL,
-@Throttle INT = NULL,
-@Encrypt NVARCHAR(MAX) = 'N',
-@EncryptionAlgorithm NVARCHAR(MAX) = NULL,
-@ServerCertificate NVARCHAR(MAX) = NULL,
-@ServerAsymmetricKey NVARCHAR(MAX) = NULL,
-@EncryptionKey NVARCHAR(MAX) = NULL,
-@ReadWriteFileGroups NVARCHAR(MAX) = 'N',
-@OverrideBackupPreference nvarchar(max) = 'N',
-@NoRecovery nvarchar(max) = 'N',
-@URL nvarchar(max) = NULL,
-@Credential nvarchar(max) = NULL,
-@MirrorDirectory nvarchar(max) = NULL,
-@MirrorCleanupTime int = NULL,
-@MirrorCleanupMode nvarchar(max) = 'AFTER_BACKUP',
-@MirrorURL nvarchar(max) = NULL,
-@AvailabilityGroups nvarchar(max) = NULL,
-@Updateability nvarchar(max) = 'ALL',
-@AdaptiveCompression nvarchar(max) = NULL,
-@ModificationLevel int = NULL,
-@MinDatabaseSizeForDifferentialBackup int = NULL,
-@LogSizeSinceLastLogBackup int = NULL,
-@TimeSinceLastLogBackup int = NULL,
-@DataDomainBoostHost nvarchar(max) = NULL,
-@DataDomainBoostUser nvarchar(max) = NULL,
-@DataDomainBoostDevicePath nvarchar(max) = NULL,
-@DataDomainBoostLockboxPath nvarchar(max) = NULL,
-@DirectoryStructure nvarchar(max) = '{ServerName}${InstanceName}{DirectorySeparator}{DatabaseName}{DirectorySeparator}{BackupType}_{Partial}_{CopyOnly}',
-@AvailabilityGroupDirectoryStructure nvarchar(max) = '{ClusterName}${AvailabilityGroupName}{DirectorySeparator}{DatabaseName}{DirectorySeparator}{BackupType}_{Partial}_{CopyOnly}',
-@DirectoryStructureCase nvarchar(max) = NULL,
-@FileName nvarchar(max) = '{ServerName}${InstanceName}_{DatabaseName}_{BackupType}_{Partial}_{CopyOnly}_{Year}{Month}{Day}_{Hour}{Minute}{Second}_{FileNumber}.{FileExtension}',
-@AvailabilityGroupFileName nvarchar(max) = '{ClusterName}${AvailabilityGroupName}_{DatabaseName}_{BackupType}_{Partial}_{CopyOnly}_{Year}{Month}{Day}_{Hour}{Minute}{Second}_{FileNumber}.{FileExtension}',
-@FileNameCase nvarchar(max) = NULL,
-@TokenTimezone nvarchar(max) = 'LOCAL',
-@FileExtensionFull nvarchar(max) = NULL,
-@FileExtensionDiff nvarchar(max) = NULL,
-@FileExtensionLog nvarchar(max) = NULL,
-@Init nvarchar(max) = 'N',
-@Format nvarchar(max) = 'N',
-@ObjectLevelRecoveryMap nvarchar(max) = 'N',
-@ExcludeLogShippedFromLogBackup nvarchar(max) = 'Y',
-@DirectoryCheck nvarchar(max) = 'Y',
-@BackupOptions nvarchar(max) = NULL,
-@Stats int = NULL,
-@ExpireDate datetime = NULL,
-@RetainDays int = NULL,
-@StringDelimiter nvarchar(max) = ',',
-@DatabaseOrder nvarchar(max) = NULL,
-@DatabasesInParallel nvarchar(max) = 'N',
-@LogToTable nvarchar(max) = 'N',
-@Execute nvarchar(max) = 'Y'
-
+    @Databases NVARCHAR(MAX) = NULL,
+    @Directory NVARCHAR(MAX) = NULL,
+    @BackupType NVARCHAR(MAX),
+    @Verify NVARCHAR(MAX) = 'N',
+    @CleanupTime INT = NULL,
+    @CleanupMode NVARCHAR(MAX) = 'AFTER_BACKUP',
+    @Compress NVARCHAR(MAX) = NULL,
+    @CompressionAlgorithm NVARCHAR(MAX) = NULL,
+    @CompressionLevel NVARCHAR(MAX) = NULL,
+    @CopyOnly NVARCHAR(MAX) = 'N',
+    @ChangeBackupType NVARCHAR(MAX) = 'N',
+    @BackupSoftware NVARCHAR(MAX) = NULL,
+    @Checksum NVARCHAR(MAX) = NULL,
+    @BlockSize INT = NULL,
+    @BufferCount INT = NULL,
+    @MaxTransferSize INT = NULL,
+    @NumberOfFiles INT = NULL,
+    @MinBackupSizeForMultipleFiles INT = NULL,
+    @MaxFileSize INT = NULL,
+    @CompressionLevelNumeric INT = NULL,
+    @Description NVARCHAR(MAX) = NULL,
+    @BackupSetName NVARCHAR(MAX) = NULL,
+    @Threads INT = NULL,
+    @Throttle INT = NULL,
+    @Encrypt NVARCHAR(MAX) = 'N',
+    @EncryptionAlgorithm NVARCHAR(MAX) = NULL,
+    @ServerCertificate NVARCHAR(MAX) = NULL,
+    @ServerAsymmetricKey NVARCHAR(MAX) = NULL,
+    @EncryptionKey NVARCHAR(MAX) = NULL,
+    @ReadWriteFileGroups NVARCHAR(MAX) = 'N',
+    @OverrideBackupPreference nvarchar(max) = 'N',
+    @NoRecovery nvarchar(max) = 'N',
+    @URL nvarchar(max) = NULL,
+    @Credential nvarchar(max) = NULL,
+    @MirrorDirectory nvarchar(max) = NULL,
+    @MirrorCleanupTime int = NULL,
+    @MirrorCleanupMode nvarchar(max) = 'AFTER_BACKUP',
+    @MirrorURL nvarchar(max) = NULL,
+    @AvailabilityGroups nvarchar(max) = NULL,
+    @Updateability nvarchar(max) = 'ALL',
+    @AdaptiveCompression nvarchar(max) = NULL,
+    @ModificationLevel int = NULL,
+    @MinDatabaseSizeForDifferentialBackup int = NULL,
+    @LogSizeSinceLastLogBackup int = NULL,
+    @TimeSinceLastLogBackup int = NULL,
+    @DataDomainBoostHost nvarchar(max) = NULL,
+    @DataDomainBoostUser nvarchar(max) = NULL,
+    @DataDomainBoostDevicePath nvarchar(max) = NULL,
+    @DataDomainBoostLockboxPath nvarchar(max) = NULL,
+    @DirectoryStructure nvarchar(max) = '{ServerName}${InstanceName}{DirectorySeparator}{DatabaseName}{DirectorySeparator}{BackupType}_{Partial}_{CopyOnly}',
+    @AvailabilityGroupDirectoryStructure nvarchar(max) = '{ClusterName}${AvailabilityGroupName}{DirectorySeparator}{DatabaseName}{DirectorySeparator}{BackupType}_{Partial}_{CopyOnly}',
+    @DirectoryStructureCase nvarchar(max) = NULL,
+    @FileName nvarchar(max) = '{ServerName}${InstanceName}_{DatabaseName}_{BackupType}_{Partial}_{CopyOnly}_{Year}{Month}{Day}_{Hour}{Minute}{Second}_{FileNumber}.{FileExtension}',
+    @AvailabilityGroupFileName nvarchar(max) = '{ClusterName}${AvailabilityGroupName}_{DatabaseName}_{BackupType}_{Partial}_{CopyOnly}_{Year}{Month}{Day}_{Hour}{Minute}{Second}_{FileNumber}.{FileExtension}',
+    @FileNameCase nvarchar(max) = NULL,
+    @TokenTimezone nvarchar(max) = 'LOCAL',
+    @FileExtensionFull nvarchar(max) = NULL,
+    @FileExtensionDiff nvarchar(max) = NULL,
+    @FileExtensionLog nvarchar(max) = NULL,
+    @Init nvarchar(max) = 'N',
+    @Format nvarchar(max) = 'N',
+    @ObjectLevelRecoveryMap nvarchar(max) = 'N',
+    @ExcludeLogShippedFromLogBackup nvarchar(max) = 'Y',
+    @DirectoryCheck nvarchar(max) = 'Y',
+    @BackupOptions nvarchar(max) = NULL,
+    @Stats int = NULL,
+    @ExpireDate datetime = NULL,
+    @RetainDays int = NULL,
+    @StringDelimiter nvarchar(max) = ',',
+    @DatabaseOrder nvarchar(max) = NULL,
+    @DatabasesInParallel nvarchar(max) = 'N',
+    @LogToTable nvarchar(max) = 'N',
+    @Execute nvarchar(max) = 'Y'
 AS
-
 BEGIN
 
   ----------------------------------------------------------------------------------------------------
@@ -520,7 +517,8 @@ BEGIN
 
   INSERT INTO @tmpDatabases (DatabaseName, DatabaseNameFS, DatabaseType, AvailabilityGroup, [Order], Selected, Completed)
   SELECT [name] AS DatabaseName,
-         RTRIM(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([name],'\',''),'/',''),':',''),'*',''),'?',''),'"',''),'<',''),'>',''),'|','')) AS DatabaseNameFS,
+         --RTRIM(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([name],'\',''),'/',''),':',''),'*',''),'?',''),'"',''),'<',''),'>',''),'|','')) AS DatabaseNameFS,
+         dbo.ufsUtilities_Hygiene_String([name], 'DatabaseNameFS') AS DatabaseNameFS,
          CASE WHEN name IN('master','msdb','model') OR is_distributor = 1 THEN 'S' ELSE 'U' END AS DatabaseType,
          NULL AS AvailabilityGroup,
          0 AS [Order],
@@ -2193,7 +2191,9 @@ BEGIN
 
   ----------------------------------------------------------------------------------------------------
 
-  IF EXISTS (SELECT * FROM (SELECT REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(@DirectoryStructure,'{DirectorySeparator}',''),'{ServerName}',''),'{InstanceName}',''),'{ServiceName}',''),'{ClusterName}',''),'{AvailabilityGroupName}',''),'{DatabaseName}',''),'{BackupType}',''),'{Partial}',''),'{CopyOnly}',''),'{Description}',''),'{BackupSetName}',''),'{Year}',''),'{Month}',''),'{Day}',''),'{Week}',''),'{Weekday}',''),'{Hour}',''),'{Minute}',''),'{Second}',''),'{Millisecond}',''),'{Microsecond}',''),'{MajorVersion}',''),'{MinorVersion}','') AS DirectoryStructure) Temp WHERE DirectoryStructure LIKE '%{%' OR DirectoryStructure LIKE '%}%')
+  -- DirectoryStructure
+  --IF EXISTS (SELECT * FROM (SELECT REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(@DirectoryStructure,'{DirectorySeparator}',''),'{ServerName}',''),'{InstanceName}',''),'{ServiceName}',''),'{ClusterName}',''),'{AvailabilityGroupName}',''),'{DatabaseName}',''),'{BackupType}',''),'{Partial}',''),'{CopyOnly}',''),'{Description}',''),'{BackupSetName}',''),'{Year}',''),'{Month}',''),'{Day}',''),'{Week}',''),'{Weekday}',''),'{Hour}',''),'{Minute}',''),'{Second}',''),'{Millisecond}',''),'{Microsecond}',''),'{MajorVersion}',''),'{MinorVersion}','') AS DirectoryStructure) Temp WHERE DirectoryStructure LIKE '%{%' OR DirectoryStructure LIKE '%}%')
+  IF EXISTS (SELECT * FROM (SELECT dbo.ufsUtilities_Hygiene_String(@DirectoryStructure, 'DirectoryStructure') AS DirectoryStructure ) Temp WHERE DirectoryStructure LIKE '%{%' OR DirectoryStructure LIKE '%}%') 
   BEGIN
     INSERT INTO @Errors ([Message], Severity, [State])
     SELECT 'The parameter @DirectoryStructure contains one or more tokens that are not supported.', 16, 1
@@ -2201,7 +2201,9 @@ BEGIN
 
   ----------------------------------------------------------------------------------------------------
 
-  IF EXISTS (SELECT * FROM (SELECT REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(@AvailabilityGroupDirectoryStructure,'{DirectorySeparator}',''),'{ServerName}',''),'{InstanceName}',''),'{ServiceName}',''),'{ClusterName}',''),'{AvailabilityGroupName}',''),'{DatabaseName}',''),'{BackupType}',''),'{Partial}',''),'{CopyOnly}',''),'{Description}',''),'{BackupSetName}',''),'{Year}',''),'{Month}',''),'{Day}',''),'{Week}',''),'{Weekday}',''),'{Hour}',''),'{Minute}',''),'{Second}',''),'{Millisecond}',''),'{Microsecond}',''),'{MajorVersion}',''),'{MinorVersion}','') AS AvailabilityGroupDirectoryStructure) Temp WHERE AvailabilityGroupDirectoryStructure LIKE '%{%' OR AvailabilityGroupDirectoryStructure LIKE '%}%')
+  -- AvailabilityGroupDirectoryStructure
+  --IF EXISTS (SELECT * FROM (SELECT REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(@AvailabilityGroupDirectoryStructure,'{DirectorySeparator}',''),'{ServerName}',''),'{InstanceName}',''),'{ServiceName}',''),'{ClusterName}',''),'{AvailabilityGroupName}',''),'{DatabaseName}',''),'{BackupType}',''),'{Partial}',''),'{CopyOnly}',''),'{Description}',''),'{BackupSetName}',''),'{Year}',''),'{Month}',''),'{Day}',''),'{Week}',''),'{Weekday}',''),'{Hour}',''),'{Minute}',''),'{Second}',''),'{Millisecond}',''),'{Microsecond}',''),'{MajorVersion}',''),'{MinorVersion}','') AS AvailabilityGroupDirectoryStructure) Temp WHERE AvailabilityGroupDirectoryStructure LIKE '%{%' OR AvailabilityGroupDirectoryStructure LIKE '%}%')
+  IF EXISTS (SELECT * FROM (SELECT dbo.ufsUtilities_Hygiene_String(@AvailabilityGroupDirectoryStructure, 'AvailabilityGroupDirectoryStructure') AS AvailabilityGroupDirectoryStructure) Temp WHERE AvailabilityGroupDirectoryStructure LIKE '%{%' OR AvailabilityGroupDirectoryStructure LIKE '%}%') 
   BEGIN
     INSERT INTO @Errors ([Message], Severity, [State])
     SELECT 'The parameter @AvailabilityGroupDirectoryStructure contains one or more tokens that are not supported.', 16, 1
@@ -2209,7 +2211,9 @@ BEGIN
 
   ----------------------------------------------------------------------------------------------------
 
-  IF EXISTS (SELECT * FROM (SELECT REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(@FileName,'{DirectorySeparator}',''),'{ServerName}',''),'{InstanceName}',''),'{ServiceName}',''),'{ClusterName}',''),'{AvailabilityGroupName}',''),'{DatabaseName}',''),'{BackupType}',''),'{Partial}',''),'{CopyOnly}',''),'{Description}',''),'{BackupSetName}',''),'{Year}',''),'{Month}',''),'{Day}',''),'{Week}',''),'{Weekday}',''),'{Hour}',''),'{Minute}',''),'{Second}',''),'{Millisecond}',''),'{Microsecond}',''),'{FileNumber}',''),'{NumberOfFiles}',''),'{FileExtension}',''),'{MajorVersion}',''),'{MinorVersion}','') AS [FileName]) Temp WHERE [FileName] LIKE '%{%' OR [FileName] LIKE '%}%')
+  -- FileName
+  --IF EXISTS (SELECT * FROM (SELECT REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(@FileName,'{DirectorySeparator}',''),'{ServerName}',''),'{InstanceName}',''),'{ServiceName}',''),'{ClusterName}',''),'{AvailabilityGroupName}',''),'{DatabaseName}',''),'{BackupType}',''),'{Partial}',''),'{CopyOnly}',''),'{Description}',''),'{BackupSetName}',''),'{Year}',''),'{Month}',''),'{Day}',''),'{Week}',''),'{Weekday}',''),'{Hour}',''),'{Minute}',''),'{Second}',''),'{Millisecond}',''),'{Microsecond}',''),'{FileNumber}',''),'{NumberOfFiles}',''),'{FileExtension}',''),'{MajorVersion}',''),'{MinorVersion}','') AS [FileName]) Temp WHERE [FileName] LIKE '%{%' OR [FileName] LIKE '%}%')
+  IF EXISTS (SELECT * FROM (SELECT dbo.ufsUtilities_Hygiene_String(@FileName,'FileName') AS [FileName]) Temp WHERE [FileName] LIKE '%{%' OR [FileName] LIKE '%}%')
   BEGIN
     INSERT INTO @Errors ([Message], Severity, [State])
     SELECT 'The parameter @FileName contains one or more tokens that are not supported.', 16, 1
@@ -2217,7 +2221,9 @@ BEGIN
 
   ----------------------------------------------------------------------------------------------------
 
-  IF EXISTS (SELECT * FROM (SELECT REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(@AvailabilityGroupFileName,'{DirectorySeparator}',''),'{ServerName}',''),'{InstanceName}',''),'{ServiceName}',''),'{ClusterName}',''),'{AvailabilityGroupName}',''),'{DatabaseName}',''),'{BackupType}',''),'{Partial}',''),'{CopyOnly}',''),'{Description}',''),'{BackupSetName}',''),'{Year}',''),'{Month}',''),'{Day}',''),'{Week}',''),'{Weekday}',''),'{Hour}',''),'{Minute}',''),'{Second}',''),'{Millisecond}',''),'{Microsecond}',''),'{FileNumber}',''),'{NumberOfFiles}',''),'{FileExtension}',''),'{MajorVersion}',''),'{MinorVersion}','') AS AvailabilityGroupFileName) Temp WHERE AvailabilityGroupFileName LIKE '%{%' OR AvailabilityGroupFileName LIKE '%}%')
+  -- AvailabilityGroupFileName
+  --IF EXISTS (SELECT * FROM (SELECT REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(@AvailabilityGroupFileName,'{DirectorySeparator}',''),'{ServerName}',''),'{InstanceName}',''),'{ServiceName}',''),'{ClusterName}',''),'{AvailabilityGroupName}',''),'{DatabaseName}',''),'{BackupType}',''),'{Partial}',''),'{CopyOnly}',''),'{Description}',''),'{BackupSetName}',''),'{Year}',''),'{Month}',''),'{Day}',''),'{Week}',''),'{Weekday}',''),'{Hour}',''),'{Minute}',''),'{Second}',''),'{Millisecond}',''),'{Microsecond}',''),'{FileNumber}',''),'{NumberOfFiles}',''),'{FileExtension}',''),'{MajorVersion}',''),'{MinorVersion}','') AS AvailabilityGroupFileName) Temp WHERE AvailabilityGroupFileName LIKE '%{%' OR AvailabilityGroupFileName LIKE '%}%')
+  IF EXISTS (SELECT * FROM (SELECT dbo.ufsUtilities_Hygiene_String(@AvailabilityGroupFileName, 'AvailabilityGroupFileName') AS AvailabilityGroupFileName) Temp WHERE AvailabilityGroupFileName LIKE '%{%' OR AvailabilityGroupFileName LIKE '%}%')
   BEGIN
     INSERT INTO @Errors ([Message], Severity, [State])
     SELECT 'The parameter @AvailabilityGroupFileName contains one or more tokens that are not supported.', 16, 1
@@ -3232,6 +3238,7 @@ BEGIN
         SET @Updated = NULL
 
         -- Directory structure - replace tokens with real values
+        --SQL Prompt Formatting Off
         SET @CurrentDirectoryStructure = REPLACE(@CurrentDirectoryStructure,'{DirectorySeparator}',@DirectorySeparator)
         SET @CurrentDirectoryStructure = REPLACE(@CurrentDirectoryStructure,'{ServerName}',CASE WHEN SERVERPROPERTY('EngineEdition') = 8 THEN LEFT(CAST(SERVERPROPERTY('ServerName') AS nvarchar(max)),CHARINDEX('.',CAST(SERVERPROPERTY('ServerName') AS nvarchar(max))) - 1) ELSE CAST(SERVERPROPERTY('MachineName') AS nvarchar(max)) END)
         SET @CurrentDirectoryStructure = REPLACE(@CurrentDirectoryStructure,'{InstanceName}',ISNULL(CAST(SERVERPROPERTY('InstanceName') AS nvarchar(max)),''))
@@ -3242,8 +3249,10 @@ BEGIN
         SET @CurrentDirectoryStructure = REPLACE(@CurrentDirectoryStructure,'{BackupType}',@CurrentBackupType)
         SET @CurrentDirectoryStructure = REPLACE(@CurrentDirectoryStructure,'{Partial}','PARTIAL')
         SET @CurrentDirectoryStructure = REPLACE(@CurrentDirectoryStructure,'{CopyOnly}','COPY_ONLY')
-        SET @CurrentDirectoryStructure = REPLACE(@CurrentDirectoryStructure,'{Description}',LTRIM(RTRIM(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(ISNULL(@Description,''),'\',''),'/',''),':',''),'*',''),'?',''),'"',''),'<',''),'>',''),'|',''))))
-        SET @CurrentDirectoryStructure = REPLACE(@CurrentDirectoryStructure,'{BackupSetName}',LTRIM(RTRIM(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(ISNULL(@BackupSetName,''),'\',''),'/',''),':',''),'*',''),'?',''),'"',''),'<',''),'>',''),'|',''))))
+        --SET @CurrentDirectoryStructure = REPLACE(@CurrentDirectoryStructure,'{Description}',LTRIM(RTRIM(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(ISNULL(@Description,''),'\',''),'/',''),':',''),'*',''),'?',''),'"',''),'<',''),'>',''),'|',''))))
+        SET @CurrentDirectoryStructure = REPLACE(@CurrentDirectoryStructure,'{Description}',dbo.ufsUtilities_Hygiene_String(@Description,'Description'))
+        --SET @CurrentDirectoryStructure = REPLACE(@CurrentDirectoryStructure,'{BackupSetName}',LTRIM(RTRIM(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(ISNULL(@BackupSetName,''),'\',''),'/',''),':',''),'*',''),'?',''),'"',''),'<',''),'>',''),'|',''))))
+        SET @CurrentDirectoryStructure = REPLACE(@CurrentDirectoryStructure,'{BackupSetName}', dbo.ufsUtilities_Hygiene_String(@BackupSetName,'BackupSetName'))
         SET @CurrentDirectoryStructure = REPLACE(@CurrentDirectoryStructure,'{Year}',CAST(DATEPART(YEAR,CASE WHEN @TokenTimezone = 'UTC' THEN @CurrentDateUTC ELSE @CurrentDate END) AS nvarchar))
         SET @CurrentDirectoryStructure = REPLACE(@CurrentDirectoryStructure,'{Month}',RIGHT('0' + CAST(DATEPART(MONTH,CASE WHEN @TokenTimezone = 'UTC' THEN @CurrentDateUTC ELSE @CurrentDate END) AS nvarchar),2))
         SET @CurrentDirectoryStructure = REPLACE(@CurrentDirectoryStructure,'{Day}',RIGHT('0' + CAST(DATEPART(DAY,CASE WHEN @TokenTimezone = 'UTC' THEN @CurrentDateUTC ELSE @CurrentDate END) AS nvarchar),2))
@@ -3256,6 +3265,7 @@ BEGIN
         SET @CurrentDirectoryStructure = REPLACE(@CurrentDirectoryStructure,'{Microsecond}',RIGHT('00000' + CAST(DATEPART(MICROSECOND,CASE WHEN @TokenTimezone = 'UTC' THEN @CurrentDateUTC ELSE @CurrentDate END) AS nvarchar),6))
         SET @CurrentDirectoryStructure = REPLACE(@CurrentDirectoryStructure,'{MajorVersion}',ISNULL(CAST(SERVERPROPERTY('ProductMajorVersion') AS nvarchar),PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS nvarchar),4)))
         SET @CurrentDirectoryStructure = REPLACE(@CurrentDirectoryStructure,'{MinorVersion}',ISNULL(CAST(SERVERPROPERTY('ProductMinorVersion') AS nvarchar),PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS nvarchar),3)))
+        --SQL Prompt Formatting On
       END
 
       IF @DirectoryStructureCase IS NOT NULL
@@ -3398,6 +3408,7 @@ BEGIN
       END
 
       -- File name - replace tokens with real values
+      --SQL Prompt Formatting Off
       SET @CurrentDatabaseFileName = REPLACE(@CurrentDatabaseFileName,'{ServerName}',CASE WHEN SERVERPROPERTY('EngineEdition') = 8 THEN LEFT(CAST(SERVERPROPERTY('ServerName') AS nvarchar(max)),CHARINDEX('.',CAST(SERVERPROPERTY('ServerName') AS nvarchar(max))) - 1) ELSE CAST(SERVERPROPERTY('MachineName') AS nvarchar(max)) END)
       SET @CurrentDatabaseFileName = REPLACE(@CurrentDatabaseFileName,'{InstanceName}',ISNULL(CAST(SERVERPROPERTY('InstanceName') AS nvarchar(max)),''))
       SET @CurrentDatabaseFileName = REPLACE(@CurrentDatabaseFileName,'{ServiceName}',ISNULL(@@SERVICENAME,''))
@@ -3406,8 +3417,10 @@ BEGIN
       SET @CurrentDatabaseFileName = REPLACE(@CurrentDatabaseFileName,'{BackupType}',@CurrentBackupType)
       SET @CurrentDatabaseFileName = REPLACE(@CurrentDatabaseFileName,'{Partial}','PARTIAL')
       SET @CurrentDatabaseFileName = REPLACE(@CurrentDatabaseFileName,'{CopyOnly}','COPY_ONLY')
-      SET @CurrentDatabaseFileName = REPLACE(@CurrentDatabaseFileName,'{Description}',LTRIM(RTRIM(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(ISNULL(@Description,''),'\',''),'/',''),':',''),'*',''),'?',''),'"',''),'<',''),'>',''),'|',''))))
-      SET @CurrentDatabaseFileName = REPLACE(@CurrentDatabaseFileName,'{BackupSetName}',LTRIM(RTRIM(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(ISNULL(@BackupSetName,''),'\',''),'/',''),':',''),'*',''),'?',''),'"',''),'<',''),'>',''),'|',''))))
+      --SET @CurrentDatabaseFileName = REPLACE(@CurrentDatabaseFileName,'{Description}',LTRIM(RTRIM(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(ISNULL(@Description,''),'\',''),'/',''),':',''),'*',''),'?',''),'"',''),'<',''),'>',''),'|',''))))
+      SET @CurrentDatabaseFileName = REPLACE(@CurrentDatabaseFileName,'{Description}',  dbo.ufsUtilities_Hygiene_String(@Description, 'Description'))
+      --SET @CurrentDatabaseFileName = REPLACE(@CurrentDatabaseFileName,'{BackupSetName}',LTRIM(RTRIM(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(ISNULL(@BackupSetName,''),'\',''),'/',''),':',''),'*',''),'?',''),'"',''),'<',''),'>',''),'|',''))))
+      SET @CurrentDatabaseFileName = REPLACE(@CurrentDatabaseFileName,'{BackupSetName}', dbo.ufsUtilities_Hygiene_String(@BackupSetName, 'BackupSetName'))
       SET @CurrentDatabaseFileName = REPLACE(@CurrentDatabaseFileName,'{Year}',CAST(DATEPART(YEAR,CASE WHEN @TokenTimezone = 'UTC' THEN @CurrentDateUTC ELSE @CurrentDate END) AS nvarchar))
       SET @CurrentDatabaseFileName = REPLACE(@CurrentDatabaseFileName,'{Month}',RIGHT('0' + CAST(DATEPART(MONTH,CASE WHEN @TokenTimezone = 'UTC' THEN @CurrentDateUTC ELSE @CurrentDate END) AS nvarchar),2))
       SET @CurrentDatabaseFileName = REPLACE(@CurrentDatabaseFileName,'{Day}',RIGHT('0' + CAST(DATEPART(DAY,CASE WHEN @TokenTimezone = 'UTC' THEN @CurrentDateUTC ELSE @CurrentDate END) AS nvarchar),2))
@@ -3422,6 +3435,7 @@ BEGIN
       SET @CurrentDatabaseFileName = REPLACE(@CurrentDatabaseFileName,'{FileExtension}',@CurrentFileExtension)
       SET @CurrentDatabaseFileName = REPLACE(@CurrentDatabaseFileName,'{MajorVersion}',ISNULL(CAST(SERVERPROPERTY('ProductMajorVersion') AS nvarchar),PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS nvarchar),4)))
       SET @CurrentDatabaseFileName = REPLACE(@CurrentDatabaseFileName,'{MinorVersion}',ISNULL(CAST(SERVERPROPERTY('ProductMinorVersion') AS nvarchar),PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS nvarchar),3)))
+      --SQL Prompt Formatting On
 
       SELECT @CurrentMaxFilePathLength = CASE
       WHEN EXISTS (SELECT * FROM @CurrentDirectories) THEN (SELECT MAX(LEN(DirectoryPath + @DirectorySeparator)) FROM @CurrentDirectories)
